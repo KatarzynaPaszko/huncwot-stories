@@ -1,26 +1,17 @@
-module.exports = function (state, action) {
-  state = state || {
-    stories: []
-  };
+const Immutable = require('immutable'); 
 
+module.exports = function (state = Immutable.Map({ stories: [] }), action) {
   switch (action.type) {
     case 'UPVOTE':
-      let stories = [];
-      for (story of state.stories) {
-        if (story.id === action.id) {
-          const newStory = Object.assign({}, story);
-          newStory.score++;
-          stories.push(newStory);
-        } else {
-          stories.push(story);
-        }
-      }
+      const idx = state.get('stories').findIndex(_ => _.get('id') === action.id);
+      const stories = state.get('stories').updateIn([idx, 'score'], _ => _ + 1); 
+
       console.log(stories);
-      return { stories };
+      return Immutable.Map({ stories });
     case 'SET_STORIES':
-      return {
-        stories: action.stories
-      }
+      return Immutable.Map({
+        stories: Immutable.fromJS(action.stories)
+      })
     default:
       return state;
   }

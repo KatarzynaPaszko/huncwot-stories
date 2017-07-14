@@ -10,7 +10,7 @@ class {
 
   onMount() {
     store.subscribe(() => {
-      this.state = store.getState();
+      this.state = store.getState().toJS();
       this.forceUpdate();
     });
   }

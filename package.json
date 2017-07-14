@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "huncwot": "^0.11.0",
+    "immutable": "^3.8.1",
     "lasso": "^2.11.14",
     "lasso-marko": "^2.3.0",
     "marko": "^4.4.18",
