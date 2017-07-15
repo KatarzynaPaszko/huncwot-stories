@@ -14,6 +14,10 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
                       component: require("../news-list")
                     },
                   {
+                      path: "/new",
+                      component: require("../add-story")
+                    },
+                  {
                       path: "/item/:id",
                       component: require("../news")
                     }

@@ -23,11 +23,11 @@ async function edit(request) {
 }
 
 async function add(request) {
-  const { name } = request.params;
+  const { title, url } = request.params;
 
-  await db('stories').insert({ name });
+  await db('stories').insert({ title, url, score: 0, submitted_at: "2017-07-07T12:05:06.000Z" });
 
-  return created({ status: `success: ${name} created` });
+  return created({ status: `success: ${title} created` });
 }
 
 async function destroy(request) {

@@ -18,6 +18,10 @@ class {
   dispatch(action) {
     store.dispatch(action);
   }
+
+  onAdd({ title, url }) {
+    this.dispatch({ type: 'CREATE_STORY', title, url })
+  }
 }
 
 style {
@@ -32,10 +36,12 @@ style {
   </div>
   <div.news-list>
     <ul>
-      ${JSON.stringify(state.stories[0])}
       <for(item in state.stories)>
         <news-item(item) key='news[]' on-upvote('dispatch', { type: 'UPVOTE', id: item.id }) />
       </for>
     </ul>
   </div>
+
+  <add-story on-add('onAdd') />
 </div>
+

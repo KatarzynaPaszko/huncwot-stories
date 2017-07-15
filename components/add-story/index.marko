@@ -1,0 +1,17 @@
+class {
+  add() {
+    const title = this.getEl('title').value;
+    const url = this.getEl('url').value;
+
+    this.emit('add', { title, url });
+  }
+}
+
+style {
+}
+
+<input type='text' key="title" />
+<input type='text' key="url" />
+<button.is-danger.button.is-outlined on-click('add')>
+  Add
+</button>
